@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 7th Month Lovieee!</title>
+    <style>
+        /* Base Reset & Layout */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Main Card Container */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 77, 77, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+            max-width: 85%;
+            z-index: 10;
+        }
+
+        /* Typography */
+        h1 {
+            color: #ff3333;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* Centered Button Styling */
+        .btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff1a1a;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 77, 77, 0.6);
+        }
+
+        /* Hidden Message Animation */
+        .hidden-message {
+            display: none;
+            margin-top: 25px;
+            font-size: 1.4em;
+            color: #cc0000;
+            font-weight: bold;
+            line-height: 1.6;
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        .signature {
+            display: block;
+            margin-top: 15px;
+            font-style: italic;
+            color: #ff3333;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Hearts Background */
+        .heart {
+            position: absolute;
+            color: #ff4d4d;
+            animation: floatUp 4s linear infinite;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Happy 7th Month Anniversary, Lovieee! ❤️</h1>
+        <p>Seven beautiful months down, and an entire lifetime to go. Every day with you is a gift.</p>
+        
+        <!-- Interactive Reveal Button -->
+        <button class="btn" id="revealBtn" onclick="triggerSurprise()">Click Me</button>
+        
+        <!-- Secret Message -->
+        <div id="secretMessage" class="hidden-message">
+            Thank you for being the best part of my life. <br> I love you more than words can say.
+            <span class="signature">Yours always,<br>Purushar</span>
+        </div>
+    </div>
+
+    <script>
+        function triggerSurprise() {
+            // Hide button and show message
+            document.getElementById('revealBtn').style.display = 'none';
+            document.getElementById('secretMessage').style.display = 'block';
+            
+            // Trigger heart animation explosion
+            createHearts();
+        }
+
+        function createHearts() {
+            const heartCount = 40; // Number of floating hearts
+            
+            for (let i = 0; i < heartCount; i++) {
+                setTimeout(() => {
+                    let heart = document.createElement('div');
+                    heart.innerHTML = '❤️';
+                    heart.className = 'heart';
+                    
+                    // Randomize position, size, and speed
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Remove heart from DOM after animation completes to keep the page light
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 100); // Stagger the creation for a continuous stream
+            }
+        }
+    </script>
+
+</body>
+</html>
