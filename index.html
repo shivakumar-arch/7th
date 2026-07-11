@@ -3,163 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 7th Month Lovieee!</title>
+    <title>7 Months of Us, Lovieee ❤️</title>
     <style>
-        /* Base Reset & Layout */
+        /* Global Styles */
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #ffe6e6, #ffcccc);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Fullscreen Page Sections */
+        .page {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            padding: 40px;
             text-align: center;
-            overflow: hidden;
             position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: none; /* Hidden by default */
+            animation: fadeIn 1.2s ease-in-out forwards;
         }
 
-        /* Main Card Container */
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
+        .active-page {
+            display: flex;
+        }
+
+        /* Glassmorphism Cards for Readability */
+        .glass-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 50px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(255, 77, 77, 0.2);
-            animation: fadeIn 1.5s ease-in-out;
-            max-width: 85%;
+            max-width: 800px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
         /* Typography */
         h1 {
-            color: #ff3333;
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            font-size: 3.5rem;
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(255, 77, 109, 0.5);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: #ffb3c6;
+            margin-bottom: 20px;
         }
 
         p {
-            color: #555;
-            font-size: 1.2em;
-            line-height: 1.5;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ffe6ea;
+            margin-bottom: 20px;
+            text-align: justify;
+            text-align-last: center;
         }
 
-        /* Centered Button Styling */
+        /* Buttons */
         .btn {
-            background-color: #ff4d4d;
+            background: linear-gradient(45deg, #ff4d6d, #c9184a);
             color: white;
             border: none;
-            padding: 15px 35px;
-            font-size: 1.2em;
+            padding: 15px 40px;
+            font-size: 1.3rem;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+            margin-top: 30px;
             transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(201, 24, 74, 0.4);
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn:hover {
-            background-color: #ff1a1a;
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 77, 77, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(201, 24, 74, 0.6);
         }
 
-        /* Hidden Message Animation */
-        .hidden-message {
-            display: none;
-            margin-top: 25px;
-            font-size: 1.4em;
-            color: #cc0000;
-            font-weight: bold;
-            line-height: 1.6;
-            animation: slideUp 1s ease-out forwards;
+        /* Page Specific Backgrounds (Using high-quality web images) */
+        #page1 { background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=2000'); }
+        #page2 { background-image: url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=2000'); }
+        #page3 { background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=2000'); }
+        #page4 { background-image: url('https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=2000'); }
+        #page5 { background-image: url('https://images.unsplash.com/photo-1531747056595-07f6cbbe10ad?q=80&w=2000'); }
+        #page6 { background-image: url('https://images.unsplash.com/photo-1606814893907-c2e42943c91f?q=80&w=2000'); }
+        #page7 { background-image: url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2000'); }
+
+        /* Memory Grid (Page 4) */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .memory-item {
+            background: rgba(255, 255, 255, 0.1);
+            height: 150px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: transform 0.3s;
+        }
+        .memory-item:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .signature {
-            display: block;
-            margin-top: 15px;
-            font-style: italic;
-            color: #ff3333;
+        /* Mini Game (Page 5) */
+        #game-area {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
         }
+        .game-heart {
+            position: absolute;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+        }
+        .game-heart:hover { transform: scale(1.2); }
+        #game-message { color: #ffb3c6; font-size: 1.5rem; margin-top: 15px; }
+        #nextBtnGame { display: none; } /* Hidden until game is won */
 
-        /* Keyframe Animations */
+        /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Floating Hearts Background */
-        .heart {
-            position: absolute;
-            color: #ff4d4d;
-            animation: floatUp 4s linear infinite;
-            z-index: 1;
-            opacity: 0.7;
-        }
+        /* Emojis & Spans */
+        .highlight { color: #ff4d6d; font-weight: bold; }
+        .signature { font-size: 1.5rem; font-style: italic; color: #ffb3c6; margin-top: 20px; display: block; text-align: right; }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Happy 7th Month Anniversary, Lovieee! ❤️</h1>
-        <p>Seven beautiful months down, and an entire lifetime to go. Every day with you is a gift.</p>
-        
-        <!-- Interactive Reveal Button -->
-        <button class="btn" id="revealBtn" onclick="triggerSurprise()">Click Me</button>
-        
-        <!-- Secret Message -->
-        <div id="secretMessage" class="hidden-message">
-            Thank you for being the best part of my life. <br> I love you more than words can say.
-            <span class="signature">Yours always,<br>Purushar</span>
+    <!-- PAGE 1: The Welcome -->
+    <div id="page1" class="page active-page">
+        <div class="glass-card">
+            <h1>Happy 7th Month, Lovieee! 💖</h1>
+            <p>Welcome to our very own space. I wanted to do something a little bigger and better for us this time. Grab a seat, take a deep breath, and click the button below when you're ready to take a walk down memory lane with your Purushar.</p>
+            <button class="btn" onclick="goToPage(2)">Let's Begin ✨</button>
         </div>
     </div>
 
-    <script>
-        function triggerSurprise() {
-            // Hide button and show message
-            document.getElementById('revealBtn').style.display = 'none';
-            document.getElementById('secretMessage').style.display = 'block';
-            
-            // Trigger heart animation explosion
-            createHearts();
-        }
+    <!-- PAGE 2: The Journey -->
+    <div id="page2" class="page">
+        <div class="glass-card">
+            <h2>7 Months of Pure Magic 🌟</h2>
+            <p>Seven months might just seem like 210 days to the rest of the world, but to me, it feels like I've known you for a lifetime. Every single day of these past seven months has brought something new—new laughs, new inside jokes, and new reasons to fall deeper in love with you.</p>
+            <p>From our very first conversations to where we are right now, looking back makes me realize how incredibly lucky I am. You've become my safe space, my biggest supporter, and my favorite notification on my phone.</p>
+            <button class="btn" onclick="goToPage(3)">Next Page ➡️</button>
+        </div>
+    </div>
 
-        function createHearts() {
-            const heartCount = 40; // Number of floating hearts
+    <!-- PAGE 3: Why I Love You -->
+    <div id="page3" class="page">
+        <div class="glass-card">
+            <h2>Why You Are My Everything 🦋</h2>
+            <p>If I had to list all the reasons I love you, my laptop would run out of storage space. But here are just a few things that make you the most special person in the world:</p>
+            <p>❤️ <span class="highlight">Your Smile:</span> It literally changes my entire mood the second I see it.</p>
+            <p>🌸 <span class="highlight">Your Caring Heart:</span> The way you look out for me and understand me, even when I don't say a word.</p>
+            <p>👑 <span class="highlight">My Pondati:</span> You carry that title perfectly. You are everything I ever prayed for, and so much more than I ever deserved.</p>
+            <button class="btn" onclick="goToPage(4)">See Our Memories 📸</button>
+        </div>
+    </div>
+
+    <!-- PAGE 4: The Memories (Placeholders for PNGs) -->
+    <div id="page4" class="page">
+        <div class="glass-card">
+            <h2>A Collection of Us 🎞️</h2>
+            <p>Here’s to the moments that turned into the best memories. (Imagine our cutest photos right here!)</p>
+            <div class="memory-grid">
+                <div class="memory-item">👩‍❤️‍👨</div>
+                <div class="memory-item">🍕</div>
+                <div class="memory-item">🌙</div>
+                <div class="memory-item">🧸</div>
+            </div>
+            <p style="margin-top:20px; font-size: 0.9rem;">(I'll replace these emojis with our actual PNGs later on my laptop! 😉)</p>
+            <button class="btn" onclick="goToPage(5)">Play a Quick Game 🎮</button>
+        </div>
+    </div>
+
+    <!-- PAGE 5: Mini Game -->
+    <div id="page5" class="page">
+        <div class="glass-card">
+            <h2>Catch My Heart! 🎯</h2>
+            <p>Prove your love! Click on 5 moving hearts to unlock the next page.</p>
+            <div id="game-area">
+                <!-- Hearts generated by JS -->
+            </div>
+            <div id="game-message">Hearts caught: <span id="score">0</span>/5</div>
+            <button id="nextBtnGame" class="btn" onclick="goToPage(6)">You Won! Next Page 🏆</button>
+        </div>
+    </div>
+
+    <!-- PAGE 6: The Love Letter -->
+    <div id="page6" class="page">
+        <div class="glass-card">
+            <h2>A Letter Just For You 💌</h2>
+            <p>My dearest Lovieee,</p>
+            <p>As we celebrate 7 months, I want you to know that this is still just the beginning. I promise to keep putting in the effort, to keep fixing things when they break, and to keep making websites, writing letters, and doing whatever it takes to see you smile.</p>
+            <p>You aren't just a part of my life; you are the core of it now. Through all the highs and lows, I choose you. Today, tomorrow, and for all the months and years to come.</p>
+            <span class="signature">- Always Yours,<br>Purushar ❤️</span>
+            <button class="btn" onclick="goToPage(7)">One Last Thing... 🎁</button>
+        </div>
+    </div>
+
+    <!-- PAGE 7: The Final Surprise & Call -->
+    <div id="page7" class="page">
+        <div class="glass-card">
+            <h2>Let's Celebrate! 🎉</h2>
+            <p>Thank you for going through this little digital journey I built for us. Words and websites are great, but hearing your voice is even better.</p>
+            <p>I'm waiting for you.</p>
+            <!-- Direct call link -->
+            <a href="tel:9353781514" class="btn" style="background: linear-gradient(45deg, #00b4d8, #0077b6);">📞 Call Your Purushar Now</a>
+        </div>
+    </div>
+
+    <!-- Javascript for Page Navigation and Mini Game -->
+    <script>
+        // --- Page Navigation Logic ---
+        function goToPage(pageNumber) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+            });
             
-            for (let i = 0; i < heartCount; i++) {
-                setTimeout(() => {
-                    let heart = document.createElement('div');
-                    heart.innerHTML = '❤️';
-                    heart.className = 'heart';
-                    
-                    // Randomize position, size, and speed
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                    
-                    document.body.appendChild(heart);
-                    
-                    // Remove heart from DOM after animation completes to keep the page light
-                    setTimeout(() => {
-                        heart.remove();
-                    }, 5000);
-                }, i * 100); // Stagger the creation for a continuous stream
+            // Show the target page
+            const targetPage = document.getElementById('page' + pageNumber);
+            targetPage.classList.add('active-page');
+            
+            // If going to page 5, start the game
+            if(pageNumber === 5) {
+                startGame();
             }
         }
-    </script>
 
+        // --- Mini Game Logic ---
+        let score = 0;
+        let gameActive = false;
+
+        function startGame() {
+            if(gameActive) return;
+            gameActive = true;
+            score = 0;
+            document.getElementById('score').innerText = score;
+            const gameArea = document.getElementById('game-area');
+            gameArea.innerHTML = ''; // clear area
+            
+            // Create 5 moving hearts
+            for(let i=0; i<5; i++) {
+                spawnHeart(gameArea);
+            }
+        }
+
+        function spawnHeart(area) {
+            const heart = document.createElement('div');
+            heart.classList.add('game-heart');
+            heart.innerText = '💖';
+            
+            // Random initial position
+            heart.style.left = Math.random() * 80 + '%';
+            heart.style.top = Math.random() * 80 + '%';
+            
+            // Click event to catch the heart
+            heart.onclick = function() {
+                if(this.style.display !== 'none') {
+                    this.style.display = 'none';
+                    score++;
+                    document.getElementById('score').innerText = score;
+                    
+                    if(score >= 5) {
+                        document.getElementById('game-message').innerText = "You caught all my love! ❤️";
+                        document.getElementById('nextBtnGame').style.display = 'inline-block';
+                    }
+                }
+            };
+            
+            area.appendChild(heart);
+            moveHeart(heart, area);
+        }
+
+        // Make the hearts float around
+        function moveHeart(heart, area) {
+            setInterval(() => {
+                if(heart.style.display !== 'none') {
+                    const newLeft = Math.random() * 85;
+                    const newTop = Math.random() * 80;
+                    heart.style.transition = "all 2s ease-in-out";
+                    heart.style.left = newLeft + '%';
+                    heart.style.top = newTop + '%';
+                }
+            }, 2000); // moves every 2 seconds
+        }
+    </script>
 </body>
 </html>
